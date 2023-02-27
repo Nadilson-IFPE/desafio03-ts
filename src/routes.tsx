@@ -8,11 +8,11 @@ import Home from "./pages/Home"
 const MainRoutes = () => {
     const { isLoggedIn } = useContext(AppContext)
 
-    return(
+    return (
         <Routes>
             <Route path='/' element={<Home />} />
-            <Route path='/conta/:id' element={ isLoggedIn ? <Conta /> : <Home/> } />
-            <Route path='/infoconta' element={<ContaInfo />} />
+            <Route path='/conta/:id' element={isLoggedIn ? <Conta /> : <Home />} />
+            <Route path='/infoconta' element={isLoggedIn ? <ContaInfo /> : <Home />} />
         </Routes>
     )
 }

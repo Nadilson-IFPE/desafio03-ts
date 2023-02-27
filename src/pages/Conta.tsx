@@ -14,7 +14,7 @@ interface UserData {
 }
 
 const Conta = () => {
-    const [ userData, setUserData ] = useState<null | UserData>()
+    const [userData, setUserData] = useState<null | UserData>()
     const { id } = useParams()
     const navigate = useNavigate()
 
@@ -33,28 +33,28 @@ const Conta = () => {
 
     const actualData = new Date()
 
-    if(userData && id !== userData.id) {
+    if (userData && id !== userData.id) {
         navigate('/')
     }
-  
+
     return (
         <Center>
             <SimpleGrid columns={2} spacing={8} paddingTop={16}>
                 {
                     userData === undefined || userData === null ?
-                    (  
-                        <Center>
-                            <Spinner size='xl' color='white'/>
-                        </Center>
-                    ) : 
-                    (
-                        <>
-                            <CardInfo mainContent={`Bem vinda ${userData?.name}`} content={`${actualData.getDay()} / ${actualData.getMonth()} / ${actualData.getFullYear()} ${actualData.getHours()}:${actualData.getMinutes()}`} />
-                            <CardInfo mainContent='Saldo' content={`R$ ${userData.balance}`}/>
-                        </>
-                    )
+                        (
+                            <Center>
+                                <Spinner size='xl' color='white' />
+                            </Center>
+                        ) :
+                        (
+                            <>
+                                <CardInfo mainContent={`Seja bem-vindo, ${userData?.name}!`} content={`${actualData.getDay()} / ${actualData.getMonth()} / ${actualData.getFullYear()} ${actualData.getHours()}:${actualData.getMinutes()}`} linkinfo="Para maiores informações sobre a conta, clique aqui." />
+                                <CardInfo mainContent='Saldo: ' content={`R$ ${userData.balance}`} />
+                            </>
+                        )
                 }
-            </SimpleGrid>    
+            </SimpleGrid>
         </Center>
     )
 }
